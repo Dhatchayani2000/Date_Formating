@@ -3,6 +3,7 @@
 ## Format Codes or Sepcification Can be used in this program:
 
 %a Weekday as Sun, Mon
+
 %A Weekday as full name as Sunday, Monday
 %w Weekday as decimal no as 0,1,2...
 %d Day of month as 01,02
