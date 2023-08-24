@@ -40,10 +40,15 @@ This script also defines a function formatting_date that takes a date from userd
 
 ## Usage
 Enter a date in any format as user needs when prompted.
+
 The script will output the converted date in the User Desired format
+
 You will be prompted to enter the following inputs:
+
 UsergivenDate: The date you want to format (e.g., "2023-08-24").
+
 UsergivenDateFormat: The format of the input date you provided (e.g., "%Y-%m-%d").
+
 DesiredFormatofUser: The format you want the output date to be in (e.g., "%d-%m-%Y").
 
 ## Function Signature
