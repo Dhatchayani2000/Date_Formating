@@ -67,10 +67,14 @@ def formatting_date(UsergivenDate, UsergivenDateFormat, DesiredFormatofUser):
 
 
   ## Example:
-  Suppose you want to format the date "2023-08-24" from the format "YYYY-MM-DD" to "DD/MM/YYYY". Here's how you would use the script:
+  Suppose you want to format the date "2023-08-24" from the format "YYYY-MM-DD" to "DD/MM/YYYY". Here's how you would use the script: 
+  
   Enter The Date: 2023-08-24
+  
   Enter The Format: %Y-%m-%d
+  
   Enter The Desired Format: %d/%m/%Y
+  
   Formatted Date: 24/08/2023
 
 
