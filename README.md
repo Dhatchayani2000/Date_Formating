@@ -1,80 +1,103 @@
-# UserDesired_Date_Formating
+## Allowed Format Codes
+The script supports the following datetime format codes:
 
-## Format Codes or Sepcification Can be used in this program:
+%Y: Year with century as a decimal number (e.g., 2023)
 
-%a Weekday as Sun, Mon
+%y: Year without century as a zero-padded decimal number (e.g., 23 for 2023)
 
-%A Weekday as full name as Sunday, Monday 
+%m: Month as a zero-padded decimal number (e.g., 02 for February)
 
-%w Weekday as decimal no as 0,1,2...
+%d: Day of the month as a zero-padded decimal number (e.g., 09)
 
-%d Day of month as 01,02
+%H: Hour (24-hour clock) as a zero-padded decimal number (e.g., 14 for 2:00 PM)
 
-%b Months as Jan, Feb
+%I: Hour (12-hour clock) as a zero-padded decimal number (e.g., 02 for 2:00 PM)
 
-%B Months as January, February
+%M: Minute as a zero-padded decimal number
 
-%m Months as 01,02
+%S: Second as a zero-padded decimal number
 
-%y Year without century as 11,12,13
+%p: AM or PM designation for time (e.g., AM or PM)
 
-%Y Year with century 2011,2012
+%b: Abbreviated month name (e.g., Jan)
 
-%H 24 Hours clock from 00 to 23
+%B: Full month name (e.g., January)
 
-%I 12 Hours clock from 01 to 12
+%a: Abbreviated day of the week (e.g., Mon)
 
-%p AM, PM
+%A: Full day of the week (e.g., Monday)
 
-%M Minutes from 00 to 59
+%j: Day of the year as a zero-padded decimal number (e.g., 365)
 
-%S Seconds from 00 to 59
+%w: Weekday as a decimal number (0 = Sunday, 6 = Saturday)
 
-%f Microseconds 6 decimal numbers
+%U: Week number of the year (Sunday as the first day of the week)
 
+%W: Week number of the year (Monday as the first day of the week)
+
+%Z: Time zone name
 
 ## Introduction
-The script uses the datetime module to handle date and time-related operations.
+The script uses the datetime module to handle date and time-related operations. 
 
-This script also defines a function formatting_date that takes a date from userdefined format as input and converts it into the User Desired format.
+It provides input validation for the desired date format and handles custom exceptions for better error handling.
+
 
 ## Usage
 Enter a date in any format as user needs when prompted.
 
 The script will output the converted date in the User Desired format
 
-You will be prompted to enter the following inputs:
+## Input Instructions
+Enter the date you want to format (e.g., 2023-08-25 08:34:56).
 
-UsergivenDate: The date you want to format (e.g., "2023-08-24").
+Enter the current format of the date (e.g., %Y-%m-%d %H:%M:%S).
 
-UsergivenDateFormat: The format of the input date you provided (e.g., "%Y-%m-%d").
+Enter the desired format for the output (e.g., %B %d, %Y %c).
 
-DesiredFormatofUser: The format you want the output date to be in (e.g., "%d-%m-%Y").
+The script will then attempt to format the date according to your specifications.
+
+If the format codes provided are not allowed or if the input date contains only numbers, appropriate error messages will be displayed.
 
 ## Function Signature
-def formatting_date(UsergivenDate, UsergivenDateFormat, DesiredFormatofUser):
-    """
-    Convert a given date from one format to another format.
+### `validate_format(format_string)`
 
-    Args:
-        UsergivenDate (str): The input date provided by the user.
-        UsergivenDateFormat (str): The format of the input date.
-        DesiredFormatofUser (str): The desired format for the output date.
+- **Input:** `format_string` (str) - The desired output date format.
+- **Output:** `True` if the format is valid, `False` otherwise.
 
-    Returns:
-        str: The input date converted to the desired format.
-    """
+This function checks if the provided `format_string` contains only valid datetime format codes. It uses predefined `ALLOWED_FORMAT_CODES` and checks each part against it.
+
+### `formatting_date(UsergivenDate, UsergivenDateFormat, DesiredFormatofUser)`
+
+  **Input:**
+  - `UsergivenDate` (str) - The original date.
+   
+  - `UsergivenDateFormat` (str) - The format of the original date.
+   
+  - `DesiredFormatofUser` (str) - The desired output date format.
+    
+  **Output:** Formatted date (str) if successful, raises `InvalidDateFormatError` otherwise.
+  
+  This function takes user inputs, validates the desired output format using `validate_format`, and then uses `datetime` operations to parse and format the date.
+
+  It handles errors by raising custom `InvalidDateFormatError` exceptions.
+
+### `InvalidDateFormatError(Exception)`
+
+  This is a custom exception class that inherits from the base `Exception` class.
+
+  It's used to handle specific errors related to invalid date formats. It can be raised with custom error messages.
 
 
   ## Example:
-  Suppose you want to format the date "2023-08-24" from the format "YYYY-MM-DD" to "DD/MM/YYYY". Here's how you would use the script: 
+  Suppose you want to format the date "2023/08/24 12:34:56" from the format "YYYY-MM-DD HH:MM:SS" to "DD/MM/YYYY SS:MM:HH(AM/PM) ". Here's how you would use the script: 
   
-  Enter The Date: 2023-08-24
+  Enter The Date (e.g., 2023-08-25 08:34:56): 2023/8/31-12:34:56 
   
-  Enter The Format: %Y-%m-%d
+  Enter The Format (e.g., %Y-%m-%d %H:%M:%S): %Y/%m/%d-%H:%M:%S 
   
-  Enter The Desired Format: %d/%m/%Y
+  Enter The Desired Format (e.g., %B %d, %Y %c): %A,%d-%m-%Y %H:%M:%S %p 
   
-  Formatted Date: 24/08/2023
+  Formatted Date: Thursday,31-08-2023 12:34:56 PM
 
 
