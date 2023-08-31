@@ -34,9 +34,9 @@ def formatting_date(UsergivenDate, UsergivenDateFormat, DesiredFormatofUser):
     except ValueError as e:
         raise InvalidDateFormatError(f"Error: {e}")
 
-UsergivenDate = input("Enter The Date (e.g., 2023-08-25): ")
-UsergivenDateFormat = input("Enter The Format (e.g., %Y-%m-%d): ")
-DesiredFormatofUser = input("Enter The Desired Format (e.g., %B %d, %Y): ")
+UsergivenDate = input("Enter The Date (e.g., 2023-08-25 08:34:56): ")
+UsergivenDateFormat = input("Enter The Format (e.g., %Y-%m-%d %H:%M:%S): ")
+DesiredFormatofUser = input("Enter The Desired Format (e.g., %B %d, %Y %c): ")
 
 try:
     output = formatting_date(UsergivenDate, UsergivenDateFormat, DesiredFormatofUser)
